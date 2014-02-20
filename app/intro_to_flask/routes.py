@@ -1,19 +1,9 @@
 from flask import Flask, render_template, request, flash
 from forms import ContactForm
+from intro_to_flask import app
 from flask.ext.mail import Message, Mail
 
 mail = Mail()
-app = Flask(__name__)
-app.secret_key = 'chang3m3!'
-
-app.config["MAIL_SERVER"] = "smtp.gmail.com"
-app.config["MAIL_PORT"] = 465
-app.config["MAIL_USE_TLS"] = False
-app.config["MAIL_USE_SSL"] = True
-app.config["MAIL_USERNAME"] = 'myemail@gmail.com'
-app.config["MAIL_PASSWORD"] = 'testingpassword123'
- 
-mail.init_app(app)
 
 @app.route('/')
 def home():
@@ -41,8 +31,3 @@ def contact():
 			return render_template('contact.html', form = form)
 	elif request.method == 'GET':
 		return render_template('contact.html', form = form)
-		
-
-
-if __name__ == "__main__":
-	app.run(debug=True)
