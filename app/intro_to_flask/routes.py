@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, flash
-from forms import ContactForm
+from flask import render_template, request, flash
+from forms import ContactForm, LoginForm
 from intro_to_flask import app
 from flask.ext.mail import Message, Mail
 
@@ -31,3 +31,14 @@ def contact():
 			return render_template('contact.html', form = form)
 	elif request.method == 'GET':
 		return render_template('contact.html', form = form)
+
+@app.route('/login', methods = ['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+    	flash('Login requested for OpenID="' + form.openid.data + '", remember_me=' + str(form.remember_me.data))
+    	return redirect('/index')
+    return render_template('login.html', 
+        title = 'Sign In',
+        form = form,
+        providers = app.config['OPENID_PROVIDERS'])

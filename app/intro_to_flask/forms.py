@@ -1,5 +1,5 @@
 from flask.ext.wtf import Form
-from wtforms import TextField, SubmitField, validators, TextAreaField, ValidationError
+from wtforms import TextField, SubmitField, validators, TextAreaField, ValidationError, BooleanField
 
 class ContactForm(Form):
     name = TextField("Name", [validators.Required("Please enter your name.")])
@@ -7,3 +7,7 @@ class ContactForm(Form):
     subject = TextField("Subject", [validators.Required("Please enter a subject.")])
     message = TextAreaField("Message", [validators.Required("Please enter a message.")])
     submit = SubmitField("Send")
+
+class LoginForm(Form):
+    openid = TextField('openid', validators = [validators.Required("Please choose a valid open id")])
+    remember_me = BooleanField('remember_me', default = False)
