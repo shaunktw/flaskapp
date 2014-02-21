@@ -1,4 +1,4 @@
-from flask import render_template, request, flash
+from flask import render_template, request, flash, redirect
 from forms import ContactForm, LoginForm
 from intro_to_flask import app
 from flask.ext.mail import Message, Mail
@@ -37,7 +37,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
     	flash('Login requested for OpenID="' + form.openid.data + '", remember_me=' + str(form.remember_me.data))
-    	return redirect('/index')
+    	return redirect('/')
     return render_template('login.html', 
         title = 'Sign In',
         form = form,
