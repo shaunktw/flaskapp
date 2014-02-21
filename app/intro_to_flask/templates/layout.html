@@ -10,14 +10,11 @@
       <h1 class="logo">Shaun Koo</h1>
       <strong><nav>
         <ul class="menu">
-          {% if login %}
           <li><a href="{{ url_for('home') }}">Home</a></li>
           <li><a href="{{ url_for('about') }}">About</a></li>
           <li><a href="{{ url_for('resume') }}">Resume</a></li>
           <li><a href="{{ url_for('contact') }}">Contact</a></li>
-          {% else %}
-          <li><a href="{{ url_for('login') }}">Login</a></li>
-          {% endif %}
+<!--          <li><a href="{{ url_for('login') }}">Login</a></li> -->
         </ul>
       </nav></strong>
     </div>

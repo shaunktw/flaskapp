@@ -3,8 +3,6 @@ from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.secret_key = 'chang3m3!'
-app.config.from_object('conifg')
-db = SQLAlchemy(app)
 
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
@@ -24,4 +22,3 @@ from routes import mail
 mail.init_app(app)
 
 import intro_to_flask.routes
-import intro_to_flask.models
