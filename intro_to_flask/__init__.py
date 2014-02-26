@@ -22,3 +22,4 @@ from routes import mail
 mail.init_app(app)
 
 import intro_to_flask.routes
+
